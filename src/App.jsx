@@ -5,7 +5,9 @@ import RightSide from './components/RightSide';
 import { TweetsUserProvider } from './components/TweetsUserProvider';
 
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'light';
+  });
 
   useEffect(() => {
     document.body.style.backgroundColor = theme === 'light' ? 'white' : 'black';

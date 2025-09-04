@@ -5,16 +5,16 @@ export default function Header({theme, setTheme}) {
     const { user } = useContext(TweetsUserContext);
 
     const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
-    }
+  const newTheme = theme === 'dark' ? 'light' : 'dark';
+  setTheme(newTheme);
+  localStorage.setItem('theme', newTheme); 
+}
 
-    const handleButtonClick = () => {
-      console.log("CLICK!");
-    }
+
+const handleButtonClick = () => {
+  localStorage.removeItem('theme'); 
+  setTheme('light');                 
+}
 
     return (
         <header className={theme}>
